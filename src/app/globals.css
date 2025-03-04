@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography"; /* markdownに必要なtailwind css だけ適用させる */
+
 
 @theme {
   --font-sans: var(--font-geist-sans);
