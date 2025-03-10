@@ -55,11 +55,14 @@ const Sidebar = () => {
           )}
         </li>
       </ul>
-        <ul style={styles.listItem} className="sidebar-link">
-          <Link href="/glossary" style={styles.partLink}>用語集</Link>
-        </ul>
       <nav>
         <ul style={{ paddingLeft: 0 }} >
+          <li style={styles.listItem} className="sidebar-link">
+            <Link href="/glossary" style={styles.section}>用語集</Link>
+          </li>
+          <li style={styles.listItem} className="sidebar-link">
+            <Link href="/documents/reference" style={styles.section}>参考文献</Link>
+          </li>
           <li style={styles.listItem} className="sidebar-link">
             <Link href="/documents/test" style={styles.section}>test</Link>
           </li>
