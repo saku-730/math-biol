@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 
 const contentDir = path.join(process.cwd(), "src/content/markdown");
+const glossaryDir = path.join(process.cwd(), "src/content/markdown/glossary");
 
 /**
  * 指定されたディレクトリ以下の全てのMarkdownファイルのパスを取得する
@@ -20,6 +21,19 @@ export function getAllMarkdownFiles(dir = contentDir): string[] {
   return files;
 }
 
+export function getGlossaryMarkdownFiles(dir = glossaryDir): string[] {
+  let files: string[] = [];
+  fs.readdirSync(dir).forEach((file) => {
+    const fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      files = [...files, ...getGlossaryMarkdownFiles(fullPath)];
+    } else if (file.endsWith(".md")) {
+      files.push(path.relative(contentDir, fullPath)); // OS依存しない相対パスに修正
+    }
+  });
+  return files;
+}
+
 /**
  * 指定されたMarkdownファイルを読み込む
  */
@@ -30,6 +44,6 @@ export function readMarkdownFile(slug: string) {
   }
   const fileContents = fs.readFileSync(filePath, "utf8");
   const { content, data } = matter(fileContents);
+
   return { content, meta: data };
 }
-

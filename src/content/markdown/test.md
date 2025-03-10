@@ -1,7 +1,7 @@
 ---
 title: "テスト記事"
 date: "2025-03-02"
-tag: "test"
+tags: ["test","test1"]
 ---
 
 ## 箇条書き

@@ -28,11 +28,26 @@ export default async function PostPage({ params }: { params: { slug?: string[] }
   const fileData = readMarkdownFile(slug); // `slug` を渡す
   if (!fileData) return notFound(); // 記事がなかったら 404
 
-// tailwindcss typographyに適用させるためにclassを設定
   return (
     <Layout>
-      <h1 className="text-3xl font-bold">{fileData.meta?.title || "工事中"}</h1>
-      <div className="prose prose-zinc dark:prose-invert"> 
+      <h1 className="text-3xl font-bold mb-6 text-center">{fileData.meta?.title || "工事中"}</h1>
+
+       {/* タグを表示 */}
+    {fileData.meta?.tags && fileData.meta.tags.length > 0 && (
+      <div className="mt-2 flex flex-wrap gap-2 mb-4 ml-[10%]">
+        {fileData.meta.tags.map((tags: string) => (
+      <a
+        key={tags}
+        href={`/tags/${tags}`} // タグページのURLにリンク
+        className="px-3 py-1 text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg"
+      >
+        {tags}
+      </a>
+    ))}
+      </div>
+    )}
+
+      <div className="prose prose-zinc dark:prose-invert max-w-none w-[80%] mx-auto"> 
         <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[ rehypeKatex]} >
           {fileData.content}
         </ReactMarkdown>

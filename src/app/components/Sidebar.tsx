@@ -16,43 +16,55 @@ const Sidebar = () => {
   };
 
   return (
-    <aside style={styles.sidebar}>
-        <ul style={{ paddingLeft: 0 }}>
-            <li style={styles.listItem}><Link href="/documents/one-sp/one-sp" style={styles.partLink}>個体群動態</Link></li>
-            <li style={styles.listItem}>
-                <button onClick={() => toggleSection("one_sp")} style={styles.chapterButton}>一種個体群</button>
-                {openSections.one_sp && (
-                <ul>
-                    <li><Link href="/documents/one-sp/one-sp" style={styles.section}>一種個体群概略</Link></li>
-                    <li><Link href="/documents/one-sp/malthus" style={styles.section}>マルサス型増殖</Link></li>
-                </ul>
-                )}
-            </li>
-
-        <li style={styles.listItem}><Link href="/documents/sex-theory/sex-theory" style={styles.partLink}>性理論</Link></li>
+    <aside style={styles.sidebar} className="sidebar">
+      <ul style={{ paddingLeft: 0 }}>
+        <li style={styles.listItem} className="sidebar-link">
+          <Link href="/documents/dynamics" style={styles.partLink}>個体群動態</Link>
+        </li>
         <li style={styles.listItem}>
-          <button onClick={() => toggleSection("sex_theory")} style={styles.chapterButton}>性理論-基礎</button>
-          {openSections.sex_theory && (
+          <button onClick={() => toggleSection("one_sp")} style={styles.chapterButton}>
+          <span style={styles.icon}>{openSections.one_sp ? "ー " : "＋ "}</span>
+            一種個体群</button>
+          {openSections.one_sp && (
             <ul>
-              <li><Link href="/documents/sex-theory/sex-theory" style={styles.section}>性理論概略</Link></li>
-              <li><Link href="/documents/sex-theory/one-sp" style={styles.section}>フィッシャー理論</Link></li>
+              <li className="sidebar-link">
+                <Link href="/documents/dynamics/one-sp/one-sp" style={styles.section}>一種個体群概略</Link>
+              </li>
+              <li className="sidebar-link">
+                <Link href="/documents/dynamics/one-sp/malthus" style={styles.section}>マルサス型増殖</Link>
+              </li>
             </ul>
           )}
         </li>
-
+        <li style={styles.listItem} className="sidebar-link">
+          <Link href="/documents/sex-theory/sex-theory" style={styles.partLink}>性理論</Link>
+        </li>
+        <li style={styles.listItem}>
+          <button onClick={() => toggleSection("sex_theory")} style={styles.chapterButton}>
+          <span style={styles.icon}>{openSections.sex_theory ? "ー " : "＋ "}</span>
+            性理論-基礎</button>
+          {openSections.sex_theory && (
+            <ul>
+              <li className="sidebar-link">
+                <Link href="/documents/sex-theory/sex-theory" style={styles.section}>性理論概略</Link>
+              </li>
+              <li className="sidebar-link">
+                <Link href="/documents/sex-theory/one-sp" style={styles.section}>フィッシャー理論</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+      </ul>
+        <ul style={styles.listItem} className="sidebar-link">
+          <Link href="/glossary" style={styles.partLink}>用語集</Link>
         </ul>
-
       <nav>
-        <ul style={{ paddingLeft: 0 }}>
-          <li style={styles.listItem}>
-            <Link href="/documents/test" style={styles.section}>
-              test
-            </Link>
+        <ul style={{ paddingLeft: 0 }} >
+          <li style={styles.listItem} className="sidebar-link">
+            <Link href="/documents/test" style={styles.section}>test</Link>
           </li>
-          <li style={styles.listItem}>
-            <Link href="/documents/template" style={styles.section}>
-              template
-            </Link>
+          <li style={styles.listItem} className="sidebar-link">
+            <Link href="/documents/template" style={styles.section}>template</Link>
           </li>
         </ul>
       </nav>
@@ -63,31 +75,35 @@ const Sidebar = () => {
 const styles = {
   sidebar: {
     width: '15%',
-    backgroundColor: '#2d3748', 
+    backgroundColor: '#333333',
     color: 'white',
-    minHeight: '100vh',  // サイドバーを画面全てに
-    padding: '1rem',  // p-4
+    minHeight: '100vh',
+    padding: '1rem',
   },
   listItem: {
-    marginBottom: '0.5rem',  // 
+    marginBottom: '0.5rem',
   },
   partLink: {
     textDecoration: 'none',
     fontWeight: 'bold',
-    color: 'white',
+    color: '#5C98D6',
   },
   chapterButton: {
-    marginLeft: '1rem',  // ml-4
+    marginLeft: '1rem',
     cursor: 'pointer',
     background: 'none',
     border: 'none',
-    color: 'white',
+    color: '#cccccc',
   },
   section: {
     display: 'block',
-    color: '#edf2f7',  // hover:text-gray-300
+    color: '#5C98D6',
     textDecoration: 'none',
     padding: '0.25rem 0',
+    marginLeft: '2rem',
+  },
+  icon: {
+    fontSize: '1.2rem',
   },
 };
 

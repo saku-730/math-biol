@@ -6,8 +6,8 @@ import Layout from '@/app/components/Layout';
 export default function Home() {
   return (
     <Layout>
-      <h1 className="text-2xl font-bold">ようこそ！</h1>
-      <p>ここは数理生物学に関する情報をまとめるサイトです。</p>
+      <h1 className="text-2xl font-bold text-center">ようこそ！</h1>
+      <p className='text-center mt-10'>ここは数理生物学に関する情報をまとめるサイトです。</p>
     </Layout>
   );
 };

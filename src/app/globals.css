@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography"; /* markdownに必要なtailwind css だけ適用させる */
 
+@plugin '@egoist/tailwindcss-icons';
+
+/* pass options to the plugin */
+@plugin '@egoist/tailwindcss-icons' {
+  scale: 1.5;
+}
 
 @theme {
   --font-sans: var(--font-geist-sans);
@@ -10,6 +16,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --link-text: #5C98D6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +30,18 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--link-text); /* 青字に設定 */
+  text-decoration: none; /* デフォルトのアンダーラインを無効化 */
+}
+
+/* ホバー時にアンダーラインを追加 */
+a:hover {
+  text-decoration: underline;
+}
+.sidebar-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--link-text);
 }

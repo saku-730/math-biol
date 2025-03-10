@@ -25,6 +25,7 @@
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@egoist/tailwindcss-icons": "^1.9.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
