@@ -6,6 +6,7 @@ import Layout from "@/app/components/Layout";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css"; 
+import rehypeRaw from "rehype-raw";
 
 // 動的ルートのパスを生成
 export async function generateStaticParams() {
@@ -48,7 +49,7 @@ export default async function PostPage({ params }: { params: { slug?: string[] }
     )}
 
       <div className="prose prose-zinc dark:prose-invert max-w-none w-[80%] mx-auto"> 
-        <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[ rehypeKatex]} >
+        <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[ rehypeKatex,rehypeRaw]} >
           {fileData.content}
         </ReactMarkdown>
       </div>
